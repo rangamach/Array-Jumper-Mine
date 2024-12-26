@@ -20,12 +20,15 @@ PlayerService::~PlayerService()
 
 void PlayerService::Initialize()
 {
+	player_controller->Initialize();
 }
 
 void PlayerService::Update()
 {
+	player_controller->Update();
 }
 
 void PlayerService::Render()
 {
+	player_controller->Render();
 }

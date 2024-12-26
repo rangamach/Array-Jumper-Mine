@@ -28,6 +28,7 @@ namespace Global
 		event_service = new EventService();
 		sound_service = new SoundService();
 		ui_service = new UIService();
+		player_service = new PlayerService();
 	}
 
 	void ServiceLocator::initialize()

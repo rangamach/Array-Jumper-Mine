@@ -41,7 +41,6 @@ Vector2f PlayerView::CalculatePlayerPosition()
 
 PlayerView::PlayerView(Player_Controller* controller)
 {
-	//game_window = nullptr;
 	player_controller = controller;
 	player_image = new ImageView();
 }
