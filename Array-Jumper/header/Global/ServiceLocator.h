@@ -3,9 +3,11 @@
 #include "../../header/Event/EventService.h"
 #include "../../header/UI/UIService.h"
 #include "../../header/Sound/SoundService.h"
+#include "../Player/PlayerService.h"
 
 using namespace Event;
 using namespace Sound;
+using namespace Player;
 
 namespace Global
 {
@@ -16,6 +18,7 @@ namespace Global
         EventService* event_service;
         SoundService* sound_service;
         UI::UIService* ui_service;
+        PlayerService* player_service;
 
         ~ServiceLocator();
 
@@ -34,5 +37,6 @@ namespace Global
         EventService* getEventService();
         SoundService* getSoundService();
         UI::UIService* getUIService();
+        PlayerService* GetPlayerService();
     };
 }

@@ -13,6 +13,7 @@ namespace Player
 	private:
 		ImageView* player_image;
 		RenderWindow* game_window;
+		Player_Controller* player_controller;
 
 		float player_height;
 		float player_width;
@@ -25,7 +26,7 @@ namespace Player
 		Vector2f CalculatePlayerPosition();
 
 	public:
-		PlayerView(Player_Controller* player_controller);
+		PlayerView(Player_Controller* controller);
 		~PlayerView();
 
 		void Initialize();

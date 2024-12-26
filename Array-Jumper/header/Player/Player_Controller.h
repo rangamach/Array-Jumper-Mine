@@ -13,7 +13,7 @@ namespace Player
 
 		void Destroy();
 
-	private:
+	public:
 		Player_Controller();
 		~Player_Controller();
 		

@@ -2,6 +2,7 @@
 #include "../../header/Player/Player_Controller.h"
 #include "../../header/Global/Config.h"
 #include "../../header/Global/ServiceLocator.h"
+#include "../../header/Player/PlayerModel.h"
 
 using namespace Player;
 using namespace Global;
@@ -38,9 +39,10 @@ Vector2f PlayerView::CalculatePlayerPosition()
 	return Vector2f(0.f,0.f);
 }
 
-PlayerView::PlayerView(Player_Controller* player_controller)
+PlayerView::PlayerView(Player_Controller* controller)
 {
-	game_window = nullptr;
+	//game_window = nullptr;
+	player_controller = controller;
 	player_image = new ImageView();
 }
 
@@ -61,4 +63,10 @@ void PlayerView::Update()
 
 void PlayerView::Render()
 {
+	switch (player_controller->GetPlayerState())
+	{
+	case PlayerState::Alive:
+		DrawPlayer();
+		break;
+	}
 }

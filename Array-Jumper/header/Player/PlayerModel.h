@@ -4,8 +4,8 @@ namespace Player
 {
 	enum class PlayerState
 	{
-		Alive,
-		Dead
+		Alive = 0,
+		Dead = 1
 	};
 	class PlayerModel
 	{
