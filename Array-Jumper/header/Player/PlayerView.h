@@ -7,6 +7,7 @@ using namespace sf;
 
 namespace Player
 {
+	class Player_Controller;
 	class PlayerView
 	{
 	private:
@@ -24,7 +25,7 @@ namespace Player
 		Vector2f CalculatePlayerPosition();
 
 	public:
-		PlayerView();
+		PlayerView(Player_Controller* player_controller);
 		~PlayerView();
 
 		void Initialize();

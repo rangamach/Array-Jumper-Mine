@@ -1,4 +1,5 @@
 #include "../../header/Player/PlayerView.h"
+#include "../../header/Player/Player_Controller.h"
 #include "../../header/Global/Config.h"
 #include "../../header/Global/ServiceLocator.h"
 
@@ -37,7 +38,7 @@ Vector2f PlayerView::CalculatePlayerPosition()
 	return Vector2f(0.f,0.f);
 }
 
-PlayerView::PlayerView()
+PlayerView::PlayerView(Player_Controller* player_controller)
 {
 	game_window = nullptr;
 	player_image = new ImageView();
