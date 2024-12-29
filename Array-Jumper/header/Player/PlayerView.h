@@ -1,9 +1,11 @@
 #pragma once
 #include "../UI/UIElement/ImageView.h"
+#include "../Level/LevelModel.h"
 
 using namespace UI;
 using namespace UIElement;
 using namespace sf;
+using namespace Level;
 
 namespace Player
 {
@@ -17,6 +19,7 @@ namespace Player
 
 		float player_height;
 		float player_width;
+		BoxDimensions current_box_dimensions;
 
 		void InitializePlayerImage();
 		void DrawPlayer();

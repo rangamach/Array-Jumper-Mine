@@ -41,5 +41,6 @@ namespace Global
         SoundService* getSoundService();
         UI::UIService* getUIService();
         PlayerService* GetPlayerService();
+        LevelService* GetLevelService();
     };
 }

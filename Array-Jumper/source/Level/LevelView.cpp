@@ -168,3 +168,8 @@ ImageView* Level::LevelView::GetBoxOverlayImage(BlockType block_type)
 	}
 	return nullptr;
 }
+
+BoxDimensions Level::LevelView::GetBoxDimensions()
+{
+	return box_dimensions;
+}

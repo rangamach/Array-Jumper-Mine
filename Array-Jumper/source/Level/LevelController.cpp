@@ -36,3 +36,8 @@ BlockType LevelController::GetCurrentBoxValue(int current_position)
 	return level_model->GetCurrentBoxValue(current_position);
 }
 
+BoxDimensions LevelController::GetBoxDimensions()
+{
+	return level_view->GetBoxDimensions();
+}
+

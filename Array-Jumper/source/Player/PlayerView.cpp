@@ -3,6 +3,7 @@
 #include "../../header/Global/Config.h"
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Player/PlayerModel.h"
+#include "../../header/Level/LevelModel.h"
 
 using namespace Player;
 using namespace Global;
@@ -25,8 +26,9 @@ void PlayerView::LoadPlayer()
 
 void PlayerView::CalculatePlayerDimensions()
 {
-	player_width = 1000.f;
-	player_height = 1000.f;
+	current_box_dimensions = ServiceLocator::getInstance()->GetLevelService()->GetBoxDimensions();
+	player_height = current_box_dimensions.box_height;
+	player_width = current_box_dimensions.box_width;
 }
 
 void PlayerView::UpdatePlayerPosition()
@@ -36,7 +38,9 @@ void PlayerView::UpdatePlayerPosition()
 
 Vector2f PlayerView::CalculatePlayerPosition()
 {
-	return Vector2f(0.f,0.f);
+	float x = current_box_dimensions.box_spacing + static_cast<float>(player_controller->GetCurrentPosition()) * (current_box_dimensions.box_width + current_box_dimensions.box_spacing);
+	float y = static_cast<float>(game_window->getSize().y) - current_box_dimensions.box_height - current_box_dimensions.bottom_offset - player_height;
+	return Vector2f(x, y);
 }
 
 PlayerView::PlayerView(Player_Controller* controller)

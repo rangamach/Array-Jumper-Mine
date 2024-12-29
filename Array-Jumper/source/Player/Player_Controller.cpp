@@ -45,3 +45,8 @@ void Player::Player_Controller::SetPlayerState(PlayerState state)
 {
 	player_model->SetPlayerState(state);
 }
+
+int Player::Player_Controller::GetCurrentPosition()
+{
+	return player_model->GetCurrentPosition();
+}

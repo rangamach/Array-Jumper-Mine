@@ -48,6 +48,7 @@ namespace Level
 		void Render();
 
 		ImageView* GetBoxOverlayImage(BlockType block_type);
+		BoxDimensions GetBoxDimensions();
 	};
 }
 

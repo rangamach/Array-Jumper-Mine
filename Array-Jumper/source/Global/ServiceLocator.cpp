@@ -61,7 +61,7 @@ namespace Global
 		if (GameService::getGameState() == GameState::GAMEPLAY)
 		{
 			level_service->Render();
-			//player_service->Render();
+			player_service->Render();
 		}
 	}
 
@@ -90,5 +90,9 @@ namespace Global
 	PlayerService* ServiceLocator::GetPlayerService()
 	{
 		return player_service;
+	}
+	LevelService* ServiceLocator::GetLevelService()
+	{
+		return level_service;
 	}
 }
