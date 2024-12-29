@@ -35,6 +35,9 @@ namespace Level
 		void DrawBoxValue(Vector2f position, BlockType box_value);
 		void DeleteImages();
 		void CalculateBoxDimensions();
+		void CalculateBoxWidthHeight();
+		void CalculateBoxSpacing();
+		Vector2f CalculateBoxPosition(int index);
 
 	public:
 		LevelView(LevelController* controller);

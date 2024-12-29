@@ -51,9 +51,14 @@ void Level::LevelView::UpdateImages()
 void Level::LevelView::DrawLevel()
 {
 	background_image->render();
-	DrawBox(Vector2f(0.f, 0.f));
-	BlockType block_type_to_draw = level_controller->GetCurrentBoxValue(0);
-	DrawBoxValue(Vector2f(0.f, 0.f), block_type_to_draw);
+
+	for (int i = 0; i < LevelData::number_of_boxes; ++i)
+	{
+		Vector2f pos = CalculateBoxPosition(i);
+		BlockType block_type_to_draw = level_controller->GetCurrentBoxValue(i);
+		DrawBox(pos);
+		DrawBoxValue(pos, block_type_to_draw);
+	}
 }
 
 void Level::LevelView::DrawBox(Vector2f position)
@@ -87,8 +92,32 @@ void Level::LevelView::DeleteImages()
 void Level::LevelView::CalculateBoxDimensions()
 {
 	if (!game_window) return;
-	box_dimensions.box_height = 300.f;
-	box_dimensions.box_width = 300.f;
+	CalculateBoxWidthHeight();
+	CalculateBoxSpacing();
+}
+
+void LevelView::CalculateBoxWidthHeight()
+{
+	float screen_width = static_cast<float>(game_window->getSize().x);
+	int number_of_boxes = LevelData::number_of_boxes;
+	int number_of_gaps = number_of_boxes + 1;
+	float total_space_of_gaps = box_dimensions.box_spacing_percentage * static_cast<float>(number_of_gaps);
+	float total_space_available = number_of_boxes + number_of_gaps;
+	box_dimensions.box_width = screen_width / total_space_available;
+	box_dimensions.box_height = box_dimensions.box_width;
+}
+
+void LevelView::CalculateBoxSpacing()
+{
+	box_dimensions.box_spacing = box_dimensions.box_width * box_dimensions.box_spacing_percentage;
+}
+
+Vector2f LevelView::CalculateBoxPosition(int index)
+{
+	Vector2f pos;
+	pos.x = box_dimensions.box_spacing + static_cast<float>(index) * (box_dimensions.box_width + box_dimensions.box_spacing);
+	pos.y = game_window->getSize().y - box_dimensions.bottom_offset;
+	return pos;
 }
 
 LevelView::LevelView(LevelController* controller)
