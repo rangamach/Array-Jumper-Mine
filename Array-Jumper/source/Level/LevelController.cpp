@@ -1,30 +1,38 @@
 #include "../../header/Level/LevelController.h"
 #include "../../header/Level/LevelModel.h"
 #include "../../header/Level/LevelView.h"
+#include "../../header/Level/LevelData.h"
+#include "../../header/Level/BlockType.h"
 
 using namespace Level;
 
-Level::LevelController::LevelController()
+LevelController::LevelController()
 {
 	level_view = new LevelView(this);
 	level_model = new LevelModel();
 }
 
-Level::LevelController::~LevelController()
+LevelController::~LevelController()
 {
 }
 
-void Level::LevelController::Initialize()
+void LevelController::Initialize()
 {
 	level_view->Initialize();
 }
 
-void Level::LevelController::Update()
+void LevelController::Update()
 {
 	level_view->Update();
 }
 
-void Level::LevelController::Render()
+void LevelController::Render()
 {
 	level_view->Render();
 }
+
+BlockType LevelController::GetCurrentBoxValue(int current_position)
+{
+	return level_model->GetCurrentBoxValue(current_position);
+}
+
