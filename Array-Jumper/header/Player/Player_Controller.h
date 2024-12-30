@@ -2,6 +2,7 @@
 
 #include "../Event/EventService.h"
 
+using namespace Event;
 namespace Player
 {
 	class PlayerView;
@@ -13,8 +14,10 @@ namespace Player
 	private:
 		PlayerModel* player_model;
 		PlayerView* player_view;
+		EventService* event_service;
 
 		bool IsValidStep(int step_number);
+		void ReadInput();
 		void Destroy();
 
 	public:

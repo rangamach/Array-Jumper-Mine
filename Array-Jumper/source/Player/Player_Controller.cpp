@@ -7,10 +7,23 @@
 
 using namespace Player;
 using namespace Global;
+using namespace Event;
 
 bool Player::Player_Controller::IsValidStep(int step_number)
 {
 	return step_number < LevelData::number_of_boxes && step_number >= 0;
+}
+
+void Player_Controller::ReadInput()
+{
+	if (event_service->pressedDKey() || event_service->pressedRightArrowKey())
+	{
+		move(MovementDirection::Forward);
+	}
+	if (event_service->pressedDKey() || event_service->pressedLeftArrowKey())
+	{
+		move(MovementDirection::Backward);
+	}
 }
 
 void Player_Controller::Destroy()
@@ -33,11 +46,13 @@ Player_Controller::~Player_Controller()
 void Player_Controller::Initialize()
 {
 	player_view->Initialize();
+	event_service = ServiceLocator::getInstance()->getEventService();
 }
 
 void Player_Controller::Update()
 {
 	player_view->Update();
+	ReadInput();	
 }
 
 void Player_Controller::Render()
