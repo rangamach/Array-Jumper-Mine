@@ -22,3 +22,8 @@ void GameSer::OnPositionChange(int position)
 {
 	gameplay_controller->OnPositionChange(position);
 }
+
+void GameSer::OnDeath()
+{
+	gameplay_controller->OnDeath();
+}

@@ -13,6 +13,7 @@ namespace Gameplay
 		void ProcessTargetBlock();
 		bool IsObstacle(BlockType value);
 		bool IsTargetBlock(BlockType value);
+		void GameOver();
 
 	public:
 		void Initialize();
@@ -20,5 +21,6 @@ namespace Gameplay
 		void Render();
 
 		void OnPositionChange(int position);
+		void OnDeath();
 	};
 }

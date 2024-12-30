@@ -56,7 +56,7 @@ void Player_Controller::Initialize()
 {
 	player_view->Initialize();
 	event_service = ServiceLocator::getInstance()->getEventService();
-	player_model->ResetPlayer();
+	ResetPlayer();
 }
 
 void Player_Controller::Update()
@@ -75,14 +75,19 @@ PlayerState Player_Controller::GetPlayerState()
 	return player_model->GetPlayerState();
 }
 
-void Player::Player_Controller::SetPlayerState(PlayerState state)
+void Player_Controller::SetPlayerState(PlayerState state)
 {
 	player_model->SetPlayerState(state);
 }
 
-int Player::Player_Controller::GetCurrentPosition()
+int Player_Controller::GetCurrentPosition()
 {
 	return player_model->GetCurrentPosition();
+}
+
+int Player_Controller::GetCurrentLives()
+{
+	return player_model->GetCurrentLives();
 }
 
 void Player::Player_Controller::Move(MovementDirection movement_direction)
@@ -139,11 +144,22 @@ void Player_Controller::Jump(MovementDirection movement_direction)
 
 void Player_Controller::TakeDamage()
 {
-	ResetPlayer();
+	player_model->DecrementLife();
+	if (player_model->GetCurrentLives() <= 0)
+		OnDeath();
+	else
+		player_model->SetCurrentPosition(0);
+
 }
 
 void Player_Controller::ResetPlayer()
 {
 	player_model->ResetPlayer();
+}
+
+void Player_Controller::OnDeath()
+{
+	ServiceLocator::getInstance()->GetGameSer()->OnDeath();
+	ResetPlayer();
 }
 

@@ -25,5 +25,16 @@ void PlayerModel::SetCurrentPosition(int position)
 void PlayerModel::ResetPlayer()
 {
 	current_position = 0;
+	current_lives = max_lives;
 	player_state = PlayerState::Alive;
+}
+
+int PlayerModel::GetCurrentLives()
+{
+	return current_lives;
+}
+
+void PlayerModel::DecrementLife()
+{
+	current_lives -= 1;
 }

@@ -20,6 +20,7 @@ namespace Player
 
 		void TakeDamage();
 		void LevelComplete();
+		int GetCurrentLives();
 	};
 }
 

@@ -42,3 +42,8 @@ void PlayerService::LevelComplete()
 {
 	player_controller->ResetPlayer();
 }
+
+int PlayerService::GetCurrentLives()
+{
+	return player_controller->GetCurrentLives();
+}

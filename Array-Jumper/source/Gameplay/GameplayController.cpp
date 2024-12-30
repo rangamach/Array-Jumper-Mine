@@ -56,3 +56,14 @@ void GameplayController::OnPositionChange(int position)
 		ProcessTargetBlock();
 	}
 }
+
+void GameplayController::GameOver()
+{
+	GameService::setGameState(GameState::CREDITS);
+	ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
+}
+
+void GameplayController::OnDeath()
+{
+	GameOver();
+}

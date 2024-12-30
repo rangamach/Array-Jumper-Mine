@@ -3,6 +3,7 @@
 #include "../../header/Main/GameService.h"
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/UI/UIElement/TextView.h"
+#include "../../header/UI/Gameplay/GameplayUIController.h"
 
 
 
@@ -15,6 +16,7 @@ namespace UI
     using namespace Instructions;
     using namespace Global;
     using namespace UIElement;
+    using namespace GameplayUI;
 
     UIService::UIService()
     {
@@ -37,6 +39,7 @@ namespace UI
         main_menu_ui_controller = new MainMenuUIController();
         credits_screen_ui_controller = new CreditsScreenUIController();
         instructions_ui_controller = new InstructionsUIController();
+        gameplay_ui_controller = new GameplayUIController();
     }
 
     void UIService::initialize()
@@ -74,6 +77,9 @@ namespace UI
         case GameState::CREDITS:
             credits_screen_ui_controller->update();
             break;
+        case GameState::GAMEPLAY:
+            gameplay_ui_controller->Update();
+            break;
         }
     }
 
@@ -92,6 +98,9 @@ namespace UI
             break;
         case GameState::CREDITS:
             credits_screen_ui_controller->render();
+            break;
+        case GameState::GAMEPLAY:
+            gameplay_ui_controller->Render();
             break;
         }
     }
