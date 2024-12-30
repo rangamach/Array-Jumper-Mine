@@ -4,6 +4,7 @@ using namespace Level;
 
 Level::LevelModel::LevelModel()
 {
+	level_configuration = new LevelConfiguration();
 }
 
 Level::LevelModel::~LevelModel()
@@ -12,7 +13,7 @@ Level::LevelModel::~LevelModel()
 
 BlockType LevelModel::GetCurrentBoxValue(int current_position)
 {
-	return level_configuration.levels[current_level].blocks_array[current_position];
+	return level_configuration->levels[current_level].blocks_array[current_position];
 }
 
 void LevelModel::LoadNextLevel()

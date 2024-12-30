@@ -16,7 +16,13 @@ void GameplayController::ProcessTargetBlock()
 {
 	ServiceLocator::getInstance()->GetPlayerService()->LevelComplete();
 	ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::LEVEL_COMPLETE);
-	GameService::setGameState(GameState::CREDITS);
+
+	if (IsLastLevel())
+	{
+		GameWon();
+		return;
+	}
+	LoadNextLevel();
 }
 
 bool GameplayController::IsObstacle(BlockType value)
@@ -66,4 +72,20 @@ void GameplayController::GameOver()
 void GameplayController::OnDeath()
 {
 	GameOver();
+}
+
+void GameplayController::GameWon()
+{
+	GameService::setGameState(GameState::CREDITS);
+	ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::LEVEL_COMPLETE);
+}
+
+void GameplayController::LoadNextLevel()
+{
+	ServiceLocator::getInstance()->GetLevelService()->LoadNextLevel();
+}
+
+bool GameplayController::IsLastLevel()
+{
+	return ServiceLocator::getInstance()->GetLevelService()->IsLastLevel();
 }

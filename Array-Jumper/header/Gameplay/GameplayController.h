@@ -14,6 +14,9 @@ namespace Gameplay
 		bool IsObstacle(BlockType value);
 		bool IsTargetBlock(BlockType value);
 		void GameOver();
+		void GameWon();
+		void LoadNextLevel();
+		bool IsLastLevel();
 
 	public:
 		void Initialize();

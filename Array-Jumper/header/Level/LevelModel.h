@@ -16,7 +16,7 @@ namespace Level
 	class LevelModel
 	{
 	private:
-		LevelConfiguration level_configuration;
+		LevelConfiguration* level_configuration;
 		int current_level;
 
 	public:
