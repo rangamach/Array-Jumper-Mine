@@ -8,11 +8,6 @@ void PlayerService::Destroy()
 	delete(player_controller);
 }
 
-void PlayerService::TakeDamage()
-{
-	player_controller->TakeDamage();
-}
-
 PlayerService::PlayerService()
 {
 	player_controller = new Player_Controller();

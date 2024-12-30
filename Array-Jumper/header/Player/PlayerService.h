@@ -9,7 +9,6 @@ namespace Player
 		Player_Controller* player_controller;
 
 		void Destroy();
-		void TakeDamage();
 	public:
 		PlayerService();
 		~PlayerService();

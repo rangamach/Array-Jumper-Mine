@@ -64,7 +64,6 @@ void Player_Controller::Initialize()
 {
 	player_view->Initialize();
 	event_service = ServiceLocator::getInstance()->getEventService();
-	player_model->ResetPlayer();
 }
 
 void Player_Controller::Update()
@@ -141,10 +140,5 @@ void Player_Controller::Jump(MovementDirection movement_direction)
 		player_model->SetCurrentPosition(target_position);
 		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::MOVE);
 	}
-}
-
-void Player_Controller::TakeDamage()
-{
-	player_model->ResetPlayer();
 }
 

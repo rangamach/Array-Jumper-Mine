@@ -21,9 +21,3 @@ void PlayerModel::SetCurrentPosition(int position)
 {
 	current_position = position;
 }
-
-void PlayerModel::ResetPlayer()
-{
-	current_position = 0;
-	player_state = PlayerState::Alive;
-}
