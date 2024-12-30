@@ -10,7 +10,10 @@ namespace Gameplay
 	{
 	private:
 		void ProcessObstacle();
+		void ProcessTargetBlock();
 		bool IsObstacle(BlockType value);
+		bool IsTargetBlock(BlockType value);
+
 	public:
 		void Initialize();
 		void Update();

@@ -37,3 +37,8 @@ void PlayerService::TakeDamage()
 {
 	player_controller->TakeDamage();
 }
+
+void PlayerService::LevelComplete()
+{
+	player_controller->ResetPlayer();
+}

@@ -9,6 +9,7 @@ namespace Player
 		Player_Controller* player_controller;
 
 		void Destroy();
+
 	public:
 		PlayerService();
 		~PlayerService();
@@ -18,6 +19,7 @@ namespace Player
 		void Render();
 
 		void TakeDamage();
+		void LevelComplete();
 	};
 }
 

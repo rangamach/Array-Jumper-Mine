@@ -139,6 +139,11 @@ void Player_Controller::Jump(MovementDirection movement_direction)
 
 void Player_Controller::TakeDamage()
 {
+	ResetPlayer();
+}
+
+void Player_Controller::ResetPlayer()
+{
 	player_model->ResetPlayer();
 }
 

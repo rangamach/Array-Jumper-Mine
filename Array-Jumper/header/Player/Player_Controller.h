@@ -35,6 +35,7 @@ namespace Player
 		void SetPlayerState(PlayerState state);
 		int GetCurrentPosition();
 		void TakeDamage();
+		void ResetPlayer();
 	};
 }
 
