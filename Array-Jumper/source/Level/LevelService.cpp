@@ -43,3 +43,18 @@ BlockType LevelService::GetCurrentBoxValue(int current_position)
 {
 	return level_controller->GetCurrentBoxValue(current_position);
 }
+
+bool LevelService::IsLastLevel()
+{
+	return level_controller->IsLastLevel();
+}
+
+int LevelService::GetCurrentLevelNumber()
+{
+	return level_controller->GetCurrentLevelNumber();
+}
+
+void LevelService::LoadNextLevel()
+{
+	level_controller->LoadNextLevel();
+}

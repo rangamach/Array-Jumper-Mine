@@ -100,6 +100,7 @@
     <ClInclude Include="header\Gameplay\GameplayController.h" />
     <ClInclude Include="header\Gameplay\GameSer.h" />
     <ClInclude Include="header\UI\Gameplay\GameplayUIController.h" />
+    <ClInclude Include="header\Level\LevelConfiguration.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\background_music.mp3" />
