@@ -133,6 +133,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Level\LevelService.cpp" />
+    <ClCompile Include="source\Level\LevelController.cpp" />
+    <ClCompile Include="source\Level\LevelModel.cpp" />
+    <ClCompile Include="source\Level\LevelView.cpp" />
+    <ClCompile Include="source\Player\PlayerService.cpp" />
+    <ClCompile Include="source\Player\Player_Controller.cpp" />
+    <ClCompile Include="source\Player\PlayerView.cpp" />
+    <ClCompile Include="source\Player\PlayerModel.cpp" />
     <ClCompile Include="source\Global\Config.cpp" />
     <ClCompile Include="source\Event\EventService.cpp" />
     <ClCompile Include="main.cpp" />
@@ -152,6 +160,7 @@
     <ClCompile Include="source\UI\UIService.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header\Level\BlockType.h" />
     <ClInclude Include="header\Global\Config.h" />
     <ClInclude Include="header\Event\EventService.h" />
     <ClInclude Include="header\Sound\SoundService.h" />
@@ -168,6 +177,15 @@
     <ClInclude Include="header\UI\UIElement\UIView.h" />
     <ClInclude Include="header\UI\UIService.h" />
     <ClInclude Include="header\Global\ServiceLocator.h" />
+    <ClInclude Include="header\Player\PlayerModel.h" />
+    <ClInclude Include="header\Player\PlayerView.h" />
+    <ClInclude Include="header\Player\Player_Controller.h" />
+    <ClInclude Include="header\Player\PlayerService.h" />
+    <ClInclude Include="header\Level\LevelController.h" />
+    <ClInclude Include="header\Level\LevelModel.h" />
+    <ClInclude Include="header\Level\LevelView.h" />
+    <ClInclude Include="header\Level\LevelService.h" />
+    <ClInclude Include="header\Level\LevelData.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\bubbleBobble.ttf" />
