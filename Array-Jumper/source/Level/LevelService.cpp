@@ -4,37 +4,42 @@
 
 using namespace Level;
 
-void Level::LevelService::Destroy()
+void LevelService::Destroy()
 {
 	delete(level_controller);
 }
 
-Level::LevelService::LevelService()
+LevelService::LevelService()
 {
 	level_controller = new LevelController();
 }
 
-Level::LevelService::~LevelService()
+LevelService::~LevelService()
 {
 	Destroy();
 }
 
-void Level::LevelService::Initialize()
+void LevelService::Initialize()
 {
 	level_controller->Initialize();
 }
 
-void Level::LevelService::Update()
+void LevelService::Update()
 {
 	level_controller->Update();
 }
 
-void Level::LevelService::Render()
+void LevelService::Render()
 {
 	level_controller->Render();
 }
 
-BoxDimensions Level::LevelService::GetBoxDimensions()
+BoxDimensions LevelService::GetBoxDimensions()
 {
 	return level_controller->GetBoxDimensions();
+}
+
+BlockType LevelService::GetCurrentBoxValue(int current_position)
+{
+	return level_controller->GetCurrentBoxValue(current_position);
 }

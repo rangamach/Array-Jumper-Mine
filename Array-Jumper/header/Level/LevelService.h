@@ -21,6 +21,7 @@ namespace Level
 		void Render();
 
 		BoxDimensions GetBoxDimensions();
+		BlockType GetCurrentBoxValue(int current_position);
 	};
 }
 
