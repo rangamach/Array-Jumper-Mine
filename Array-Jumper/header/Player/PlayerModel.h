@@ -18,6 +18,7 @@ namespace Player
 
 		int GetCurrentPosition();
 		void SetCurrentPosition(int position);
+		void ResetPlayer();
 	};
 }
 

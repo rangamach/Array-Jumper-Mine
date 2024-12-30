@@ -1,16 +1,12 @@
 #pragma once
 
-#include "../Level/BlockType.h"
-
-using namespace Level;
-
 namespace Gameplay
 {
-	class GameplayController
+	class GameplayController;
+	class GameSer
 	{
 	private:
-		void ProcessObstacle();
-		bool IsObstacle(BlockType value);
+		GameplayController* gameplay_controller;
 	public:
 		void Initialize();
 		void Update();

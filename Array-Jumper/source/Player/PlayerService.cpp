@@ -32,3 +32,8 @@ void PlayerService::Render()
 {
 	player_controller->Render();
 }
+
+void PlayerService::TakeDamage()
+{
+	player_controller->TakeDamage();
+}

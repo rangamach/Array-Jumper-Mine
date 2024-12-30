@@ -28,18 +28,10 @@ void Player_Controller::ReadInput()
 	if (event_service->heldSpaceKey() && event_service->pressedAKey() || event_service->pressedLeftArrowKey())
 	{
 		Jump(MovementDirection::Backward);
-		/*if (event_service->heldSpaceKey())
-		{
-			Jump(MovementDirection::Backward);
-		}*/
 	}
 	if (event_service->heldSpaceKey() && event_service->pressedDKey() || event_service->pressedRightArrowKey())
 	{
 		Jump(MovementDirection::Forward);
-		//if (event_service->heldSpaceKey())
-		//{
-		//	Jump(MovementDirection::Forward);
-		//}
 	}
 }
 
@@ -64,6 +56,7 @@ void Player_Controller::Initialize()
 {
 	player_view->Initialize();
 	event_service = ServiceLocator::getInstance()->getEventService();
+	player_model->ResetPlayer();
 }
 
 void Player_Controller::Update()
@@ -114,6 +107,7 @@ void Player::Player_Controller::Move(MovementDirection movement_direction)
 		player_model->SetCurrentPosition(target_position);
 		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::MOVE);
 	}
+	ServiceLocator::getInstance()->GetGameSer()->OnPositionChange(target_position);
 }
 
 void Player_Controller::Jump(MovementDirection movement_direction)
@@ -140,5 +134,11 @@ void Player_Controller::Jump(MovementDirection movement_direction)
 		player_model->SetCurrentPosition(target_position);
 		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::MOVE);
 	}
+	ServiceLocator::getInstance()->GetGameSer()->OnPositionChange(target_position);
+}
+
+void Player_Controller::TakeDamage()
+{
+	player_model->ResetPlayer();
 }
 

@@ -1,6 +1,7 @@
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Main/GameService.h"
 #include "../../header/Event/EventService.h"
+#include "../../header/Gameplay/GameSer.h"
 
 
 namespace Global
@@ -10,6 +11,7 @@ namespace Global
 	using namespace Sound;
 	using namespace UI;
 	using namespace Main;
+	using namespace Gameplay;
 
 	ServiceLocator::ServiceLocator()
 	{
@@ -31,6 +33,7 @@ namespace Global
 		ui_service = new UIService();
 		player_service = new PlayerService();
 		level_service = new LevelService();
+		game_ser = new GameSer();
 	}
 
 	void ServiceLocator::initialize()
@@ -41,6 +44,7 @@ namespace Global
 		ui_service->initialize();
 		level_service->Initialize();
 		player_service->Initialize();
+		game_ser->Initialize();
 	}
 
 	void ServiceLocator::update()
@@ -52,6 +56,7 @@ namespace Global
 		{
 			level_service->Update();
 			player_service->Update();
+			game_ser->Update();
 		}
 	}
 
@@ -63,6 +68,7 @@ namespace Global
 		{
 			level_service->Render();
 			player_service->Render();
+			game_ser->Render();
 		}
 	}
 
@@ -92,8 +98,14 @@ namespace Global
 	{
 		return player_service;
 	}
+	
 	LevelService* ServiceLocator::GetLevelService()
 	{
 		return level_service;
+	}
+
+	GameSer* ServiceLocator::GetGameSer()
+	{
+		return game_ser;
 	}
 }

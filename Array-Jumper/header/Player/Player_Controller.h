@@ -34,6 +34,7 @@ namespace Player
 		PlayerState GetPlayerState();
 		void SetPlayerState(PlayerState state);
 		int GetCurrentPosition();
+		void TakeDamage();
 	};
 }
 
