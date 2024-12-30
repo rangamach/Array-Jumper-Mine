@@ -2,6 +2,7 @@
 #include "../../header/Player/PlayerModel.h"
 #include "../../header/Player/PlayerView.h"
 #include "../../header/Player/MovementDirection.h"
+#include <iostream>
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Event/EventService.h"
 
@@ -16,13 +17,29 @@ bool Player::Player_Controller::IsValidStep(int step_number)
 
 void Player_Controller::ReadInput()
 {
-	if (event_service->pressedDKey() || event_service->pressedRightArrowKey())
+	if (!event_service->heldSpaceKey() && event_service->pressedDKey() || event_service->pressedRightArrowKey())
 	{
-		move(MovementDirection::Forward);
+		Move(MovementDirection::Forward);
 	}
-	if (event_service->pressedDKey() || event_service->pressedLeftArrowKey())
+	if (!event_service->heldSpaceKey() && event_service->pressedAKey() || event_service->pressedLeftArrowKey())
 	{
-		move(MovementDirection::Backward);
+		Move(MovementDirection::Backward);
+	}
+	if (event_service->heldSpaceKey() && event_service->pressedAKey() || event_service->pressedLeftArrowKey())
+	{
+		Jump(MovementDirection::Backward);
+		/*if (event_service->heldSpaceKey())
+		{
+			Jump(MovementDirection::Backward);
+		}*/
+	}
+	if (event_service->heldSpaceKey() && event_service->pressedDKey() || event_service->pressedRightArrowKey())
+	{
+		Jump(MovementDirection::Forward);
+		//if (event_service->heldSpaceKey())
+		//{
+		//	Jump(MovementDirection::Forward);
+		//}
 	}
 }
 
@@ -75,7 +92,7 @@ int Player::Player_Controller::GetCurrentPosition()
 	return player_model->GetCurrentPosition();
 }
 
-void Player::Player_Controller::move(MovementDirection movement_direction)
+void Player::Player_Controller::Move(MovementDirection movement_direction)
 {
 	int steps;
 	int target_position;
@@ -86,6 +103,32 @@ void Player::Player_Controller::move(MovementDirection movement_direction)
 		break;
 	case MovementDirection::Backward:
 		steps = -1;
+		break;
+	default:
+		steps = 0;
+		break;
+	}
+	target_position = player_model->GetCurrentPosition() + steps;
+	if (IsValidStep(target_position))
+	{
+		player_model->SetCurrentPosition(target_position);
+		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::MOVE);
+	}
+}
+
+void Player_Controller::Jump(MovementDirection movement_direction)
+{
+	int current_position = player_model->GetCurrentPosition();
+	BlockType box_value = ServiceLocator::getInstance()->GetLevelService()->GetCurrentBoxValue(current_position);
+	int steps;
+	int target_position;
+	switch (movement_direction)
+	{
+	case MovementDirection::Forward:
+		steps = static_cast<int>(box_value);
+		break;
+	case MovementDirection::Backward:
+		steps = -static_cast<int>(box_value);
 		break;
 	default:
 		steps = 0;

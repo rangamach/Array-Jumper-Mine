@@ -7,6 +7,7 @@ namespace Player
 {
 	class PlayerView;
 	class PlayerModel;
+	class LevelModel;
 	enum class PlayerState;
 	enum class MovementDirection;
 	class Player_Controller
@@ -19,6 +20,8 @@ namespace Player
 		bool IsValidStep(int step_number);
 		void ReadInput();
 		void Destroy();
+		void Move(MovementDirection movement_direction);
+		void Jump(MovementDirection movement_direction);
 
 	public:
 		Player_Controller();
@@ -31,7 +34,6 @@ namespace Player
 		PlayerState GetPlayerState();
 		void SetPlayerState(PlayerState state);
 		int GetCurrentPosition();
-		void move(MovementDirection movement_direction);
 	};
 }
 
