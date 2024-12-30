@@ -32,3 +32,18 @@ void PlayerService::Render()
 {
 	player_controller->Render();
 }
+
+void PlayerService::TakeDamage()
+{
+	player_controller->TakeDamage();
+}
+
+void PlayerService::LevelComplete()
+{
+	player_controller->ResetPlayer();
+}
+
+int PlayerService::GetCurrentLives()
+{
+	return player_controller->GetCurrentLives();
+}
